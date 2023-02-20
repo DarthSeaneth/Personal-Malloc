@@ -107,7 +107,7 @@ bool validPointer(void *memPtr){ //checks if a given pointer is within the bound
  * contains the correct address of a chunk's metadata
  * returns true if it does, and false otherwise
  */
-bool completePointer(void *memPtr){
+bool goodPointer(void *memPtr){
     void *metaData = memory;
     while(metaData != NULL){
         if(memPtr - sizeof(short) == metaData){
@@ -205,7 +205,7 @@ void myfree(void *ptr, char *file, int line) {
         memError(file, line, 2);
         return;
     }
-    if(!completePointer(ptr)){ //if pointer doesn't point to correct position
+    if(!goodPointer(ptr)){ //if pointer doesn't point to correct position
         memError(file, line, 3);
         return;
     }
