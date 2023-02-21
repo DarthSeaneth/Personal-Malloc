@@ -120,13 +120,13 @@ void calculateTime(struct timeval start, struct timeval end, double currentTimes
             break;
     }
     gettimeofday(&end, NULL);
-    currentTimes[pos] = (((end.tv_sec * 1000) + (end.tv_usec * 1000)) - ((start.tv_sec * 1000) + (start.tv_usec * 1000)));
+    currentTimes[pos] = (((end.tv_sec * 1000000) + (end.tv_usec)) - ((start.tv_sec * 1000000) + (start.tv_usec)));
 }
 
 /*
  * Sets seed of srand() to ensure random numbers upon every exeution of the program
  * Then runs each of the tasks 50 times, printing the time spent on each iteration
- * Then prints the average time spent on each task (times in milliseconds)
+ * Then prints the average time spent on each task (times in microseconds)
  */
 int main(int argc, char **argv){
     srand(time(0));
@@ -140,12 +140,12 @@ int main(int argc, char **argv){
         }
         for(int j = 0; j < 5; j ++){
             totalTimes[j] += currentTimes[j];
-            printf("Time spent on task %d: %lf milliseconds\n", j+1, currentTimes[j]);
+            printf("Time spent on task %d: %lf microseconds\n", j+1, currentTimes[j]);
         }
         printf("\n");
     }
     for(int i = 0; i < 5; i ++){
-        printf("Average time spent on task %d: %lf milliseconds\n", i+1, (totalTimes[i]/50));
+        printf("Average time spent on task %d: %lf microseconds\n", i+1, (totalTimes[i]/50));
     }
     return EXIT_SUCCESS;
 }
