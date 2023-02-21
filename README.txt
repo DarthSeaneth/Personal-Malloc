@@ -20,7 +20,8 @@ This also allows us to iterate through each chunk of memory like a linked list b
 We have modularized our mymalloc library with various helper functions and thoroughly commented the code in order to minimize code repetition and to ensure 
 a user-friendly, descriptive, and readable library that can be easily interpreted.
 
-Memgrind and our test program will be compiled and made executable by using the "make" command with our Makefile.
+Memgrind, err, and our test program will be compiled and made executable by using the "make" command with our Makefile.
+After calling "make", memgrind can be run by using the command ./memgrind, the test program can be run by using ./test, and err can be run by using ./test followed by an integer representing which test case to choose (1, 2, or 3)
 
 Helper functions:
 void insertMetaData(void *memPtr, short chunkSize);
